@@ -1,0 +1,166 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+
+<div class="Honors-min commonweb padtb">
+  <div class="Honor-list">
+    <ul class="clearfix" id="masonry">
+        {module catid=$catid order=updatetime page=1}
+        <li class="col-sm-4"> 
+            <a href="javascript:;"> 
+                <p class="elc-img"> <img src="{dr_thumb($t.thumb, 728, 460)}" alt="{$t.title}" title="{$t.title}"/> </p>
+                <p class="elc-text">{$t.title}</p>
+            </a> 
+        </li>
+        {/module}
+    </ul>
+    <script src="{HOME_THEME_PATH}js/modernizr.custom.js"></script> 
+    <script src="{HOME_THEME_PATH}js/masonry.pkgd.min.js"></script> 
+    <script src="{HOME_THEME_PATH}js/imagesloaded.pkgd.min.js"></script> 
+    <script src="{HOME_THEME_PATH}js/classie.js"></script> 
+    <script src="{HOME_THEME_PATH}js/animonscroll.js"></script> 
+    <script>
+
+    $(window).load(function () {
+        // 加载按钮
+        var loading = $('.loading');
+        // 加载开关 默认关闭
+        loading.data("on", false);
+        // loading.hide();
+        var win = $(window);
+        // 记录初始数据条数
+        var itemL = $('.Honor-left').find('li').length;
+        var totalpage = 2;
+        var curpage = 1;
+
+            win.scroll(function () {
+                // 资质荣誉弹窗
+                var _popW = $(window).width() * 0.94 < 800 ? $(window).width() * 0.94 : 800;
+                var _popH = $(window).height() * 0.65 < 600 ? $(window).height() * 0.65 : 600;
+                var _poprate = _popW / _popH;
+
+                function getSlide(originImgs, popupSwStr, numWrap) {
+                    var $thumb = $(originImgs);
+                    var $thumbSwiper = $(popupSwStr).html('');
+                    var slide_length = $thumb.length;
+                    for (var i = 0; i < slide_length; i++) {
+                        var $img = $thumb.eq(i);
+                        var imgW = $img.width();
+                        var imgH = $img.height();
+                        var rate = imgW / imgH;
+                        var $item = $('<li class="swiper-slide"><img src="' + $thumb[i].src + '"></li>');
+                        if (rate < _poprate) {
+                            $item.find('img').addClass('maxh');
+                        }
+                        ; $thumbSwiper.append($item);
+                    }
+                    ; $(numWrap).html(slide_length);
+                };
+                getSlide(".Honor-list ul img", ".thumb-popup .swiper-wrapper", ".thumb-count");
+                if (typeof Swiper != 'undefined') {
+                    var thumbCopySwiper = new Swiper(".thumb-copy-wrapper", {
+                        speed: 1000,
+                        prevButton: '.swiper-left',
+                        nextButton: '.swiper-right',
+                        loop: false,
+                        pagination: "",
+                        observer: true,
+                        observeParents: true,
+                        onSlideChangeStart: function (swiper) {
+                            var thisText = $(".Honor-list li").eq(thumbCopySwiper.activeIndex).find(" p").text();
+
+                            $(".thumbtext-list").html(thisText);
+                            $(".thumb-index").html(thumbCopySwiper.activeIndex + 1);
+                        }
+                    });
+
+                };
+                $(document).on("click", ".Honor-list li a", function (ev) {
+                    ev.preventDefault();
+                    var thisIndex = $(this).parents("li").index();
+                    var thisText = $(this).find(".elc-text").text();
+                    console.log(thisIndex);
+                    thumbCopySwiper.slideTo($(this).parents("li").index(), 0, false);
+
+                    $(".thumbtext-list").html(thisText);
+                    $(".thumb-index").html(thisIndex + 1);
+                    $(".thumb-popup").fadeIn(300);
+                    $(".probg").fadeIn(300);
+                    var $height = $(window).height();
+                    $(".thumb-popup ul li").css("height", $height);
+                });
+
+
+
+                var totalheight = parseFloat(win.height()) + parseFloat(win.scrollTop());
+
+                if ($(".Honor-left").height() <= totalheight) {
+                    //没有更多数据就不执行
+                    if (!loading.data("on")) return;
+                    curpage += 1;
+                    if (curpage > totalpage) {
+                        loading.data("on", false);//关闭加载更多
+                        // loading.find('span').text('就只有这么多了');
+                        loading.show();
+
+                    } else {
+                        $.ajax({
+                            url: url.replace("{page}", curpage),
+                            success: function (res) {
+                                // 数据延时1000毫秒追加
+
+                                var time = setTimeout(function () {
+                                    $(con).append($(res).find(con).children());
+                                    new AnimOnScroll(document.getElementById('masonry'), {
+                                        minDuration: 0.4,
+                                        maxDuration: 0.7,
+                                        viewportFactor: 0.2
+                                    });
+                                    if (curpage > totalpage) {
+                                        loading.data("on", false);
+                                        $(".loadEffect").html("")
+                                        loading.text('');
+                                        loading.show();
+                                    }
+                                    clearTimeout(time);
+                                }, 1000);
+                            }
+                        });
+                    }
+
+                }
+            })
+
+            $(window).resize(function () {
+                new AnimOnScroll(document.getElementById('masonry'), {
+                    minDuration: 0.4,
+                    maxDuration: 0.7,
+                    viewportFactor: 0.2
+                });
+            })
+        })
+     </script> 
+  </div>
+  <div class="pages">
+    {$pages}
+  </div>
+</div>
+
+<!--弹窗-->
+<div class="probg"></div>
+<div class="thumb-popup"> <span class="close"></span>
+  <div class="thumb-wraper">
+    <div class="thumb-copy-wrapper">
+      <ul class="swiper-wrapper">
+      </ul>
+    </div>
+    <div class="popup-btn swiper-left"></div>
+    <div class="popup-btn swiper-right"></div>
+    <div class="thumb-text"> <span class="thumbtext-list"></span> </div>
+  </div>
+</div>
+{template "footer.html"}
+</body>
+</html>

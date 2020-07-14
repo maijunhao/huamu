@@ -1,0 +1,45 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "cat.html"}
+
+<div class="Comprepairform commonweb padtb">
+  <form class="form-horizontal" action="" method="post" name="myform" id="myform">
+    {dr_form_hidden()}
+    <div class="Comprepair">
+      <ul class="clearfix">
+        <li>
+          <label class="clearfix"> <span><em><font style='color:red'>*</font></em>您的昵称：</span>
+            <input type="text" name="data[title]" id="dr_title" required="required" value="" class="inputext" placeholder=""/>
+          </label>
+        </li>
+        <li>
+          <label class="clearfix"> <span><em><font style='color:red'>*</font></em>您的电话：</span>
+            <input type="text" name="data[phone]" id="dr_phone" required="required" value="" class="inputext" placeholder=""/>
+          </label>
+        </li>
+        <li>
+          <label class="clearfix"> <span><em><font style='color:red'>*</font></em>您的地址：</span>
+            <input type="text" name="data[address]" id="dr_address" required="required" value="" class="inputext" placeholder=""/>
+          </label>
+        </li>
+        <li>
+          <label class="clearfix"> <span><em></em>联系邮箱：</span>
+            <input type="text" name="data[email]" id="dr_email" required="required" value="" class="inputext" placeholder=""/>
+          </label>
+        </li>
+        <li class="litextarea">
+          <label class="clearfix"> <span><em></em>留言内容：</span>
+            <textarea name="data[content]" id="dr_content" ></textarea>
+          </label>
+        </li>
+        <li class="lisubmit">
+          <label class="clearfix">
+			  <button type="button" onclick="dr_ajax_submit('/index.php?s=form&c=complaint&m=post', 'myform', '2000', '/')" class="layui-btn submit"> <i class="fa fa-save"></i> 提交内容</button>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
+{template "footer.html"}

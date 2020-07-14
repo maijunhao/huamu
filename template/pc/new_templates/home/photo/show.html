@@ -1,0 +1,23 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+<!-- {template "nav.html"} -->
+<div class="newscenter-detail commonweb padtb">
+    <div class="news-detail-title"> 
+        <h1 class="font24">{$title}</h1>
+    </div>
+    <div class="news-datail-content padtb" >
+        {$content}
+    </div>
+    <div class="news-detail-foot">
+        <dl class="clearfix">
+            <dd class="clearfix">
+                上一篇：{if $prev_page}<a href="{$prev_page.url}">{$prev_page.title}</a>{else}没有了{/if} 
+            </dd>
+            <dt class="clearfix">
+                下一篇：{if $next_page}<a href="{$next_page.url}">{$next_page.title}</a>{else}没有了{/if} 
+            </dt>
+        </dl>
+    </div>
+</div>
+{template "footer.html"}

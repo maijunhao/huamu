@@ -1,0 +1,59 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+
+<div class="contact-minbox commonweb padtb">
+  <div class="contact-dl clearfix" >
+    <div class="thumb"><img src="{HOME_THEME_PATH}picture/1569492303.jpg"/></div>
+    <div class="infor"> <h3 class="font24">
+	{dr_block('jtqc')}</h3>
+<p class="PS clearfix">
+	<span class="name">微信： </span> <span class="text"> <span style="white-space:normal;">{dr_block('weixin')}</span></span></p>
+<p class="PS clearfix">
+	<span class="name">邮箱： </span> <span class="text"> <span style="white-space:normal;">{dr_block('email')}</span></span></p>
+<p class="PS clearfix">
+	<span class="name">电话： </span> <span class="text"> + {dr_block('tel')}</span></p>
+<p class="PS clearfix">
+	<span class="name">手机： </span> <span class="text"> + {dr_block('phone')}</span></p>
+<p class="PS clearfix">
+	<span class="name">地址： </span> <span class="text"> <span style="white-space:normal;">{dr_block('address')}</span></span></p>
+ </div>
+  </div>
+  <div class="map"> 
+    <script type="text/javascript" src="{HOME_THEME_PATH}js/map.js"></script>
+    <style type="text/css">
+#allmap {width: 100%;height: 400px;margin-top:20px;overflow: hidden;font-family:"微软雅黑";}
+#allmap b{color: #CC5522;font-size: 14px; }
+#allmap img{max-width: none;}
+</style>
+    <div id="allmap"></div>
+    <script type="text/javascript">
+	  var map = new BMap.Map("allmap");
+	  map.centerAndZoom(new BMap.Point({dr_block('bd-ip')}), 18);
+	  var marker1 = new BMap.Marker(new BMap.Point({dr_block('bd-ip')}));  // 创建标注
+	  map.addOverlay(marker1);              // 将标注添加到地图中
+	  //marker1.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画				
+	  //创建信息窗口 
+	  var infoWindow1 = new BMap.InfoWindow("<b>{dr_block('jtqc')}</b><br>{dr_block('address')}<br>电话：{dr_block('tel')}");
+	  marker1.openInfoWindow(infoWindow1);
+	  //marker1.addEventListener("click", function(){this.openInfoWindow(infoWindow1);});	
+	  //向地图中添加缩放控件
+ var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+ map.addControl(ctrl_nav);
+      //向地图中添加缩略图控件
+ var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+ map.addControl(ctrl_ove);
+      //向地图中添加比例尺控件
+ var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+ map.addControl(ctrl_sca);
+ 
+ map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地				
+</script> 
+  </div>
+</div>
+{template "footer.html"}

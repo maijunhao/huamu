@@ -1,0 +1,32 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+<div class="common-clumb-min commonweb clearfix">
+    <div class="clumb-title">
+        <h3 class="cn font22">ËÑË÷¡°{$keyword}¡±µÄ½á¹û</h3>
+    </div>
+</div>
+
+<div class="newscenter-list commonweb">
+  <ul class="clearfix">
+        {search module=MOD_DIR id=$searchid total=$sototal order=$params.order catid=$catid page=1 pagesize=10 urlrule=$urlrule}
+        <li class="col-sm-4"> 
+            <a href="{$t.url}" title="{$t.title}">
+                <p class="news-img"> <img  src="{dr_thumb($t.thumb, 378, 278)}" alt="{$t.title}" /> </p>
+                <div class="news-text">
+                    <h3 class="name">{$t.title}</h3>
+                    <p class="desc">{$t.description}</p>
+                    <span class="date">{$t.updatetime}</span> 
+                </div>
+            </a> 
+        </li>
+        {/search}
+  </ul>
+</div>
+<div class="commonweb padtbb">
+  <div class="pages">
+    {$pages}
+  </div>
+</div>
+{template "footer.html"}

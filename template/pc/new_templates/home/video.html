@@ -1,0 +1,34 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+
+<div class="Videos-min commonweb padtb">
+    <div class="Video-list">
+        <ul class="clearfix" id="masonry">
+            {module catid=$catid order=updatetime page=1}
+            <li class="col-sm-4"> 
+                <a href="{$t.url}" title="{$t.title}">
+                    <div class="elc-img"> 
+                        <img src="{dr_thumb($t.thumb)}" alt="{$t.title}" title="{$t.title}" />
+                        <div class="video-show"> <span class="videoicon"></span> </div>
+                    </div>
+                    <p class="elc-text">{$t.title}</p>
+                </a> 
+            </li>
+            {/module}
+        </ul>
+    </div>
+    <div class="pages">
+        {$pages}
+    </div>
+</div>
+<script src="{HOME_THEME_PATH}js/modernizr.custom.js"></script>
+<script src="{HOME_THEME_PATH}js/masonry.pkgd.min.js"></script>
+<script src="{HOME_THEME_PATH}js/imagesloaded.pkgd.min.js"></script>
+<script src="{HOME_THEME_PATH}js/classie.js"></script>
+<script src="{HOME_THEME_PATH}js/animonscroll.js"></script>
+{template "footer.html"}
+</body>
+</html>

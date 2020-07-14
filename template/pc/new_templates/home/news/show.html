@@ -1,0 +1,25 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+<div class="newscenter-detail commonweb padtb">
+    <div class="news-detail-title"> 
+        <span class="date font22">{$updatetime}</span>
+        <h2 class="font24">{$title}</h2>
+        <div class="newshare bdsharebuttonbox " id="newshare"> 分享到： <a href="javascript:;" class="bds_tsina txinlang" data-cmd="tsina" title="分享到新浪微博"></a> <a href="javascript:;" class="bds_weixin tweixin" data-cmd="weixin" title="分享到微信"></a> <a href="javascript:;" class="tQQ bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a> </div>
+    </div>
+    <div class="news-datail-content padtb" >
+        {$content}
+    </div>
+    <div class="news-detail-foot">
+        <dl class="clearfix">
+            <dd class="clearfix">
+                上一篇：{if $prev_page}<a href="{$prev_page.url}">{$prev_page.title}</a>{else}没有了{/if} 
+            </dd>
+            <dt class="clearfix">
+                下一篇：{if $next_page}<a href="{$next_page.url}">{$next_page.title}</a>{else}没有了{/if} 
+            </dt>
+        </dl>
+    </div>
+</div>
+{template "footer.html"}

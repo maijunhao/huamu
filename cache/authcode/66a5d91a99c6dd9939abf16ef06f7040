@@ -1,0 +1,5 @@
+SELECT *
+FROM `dr_admin`
+LEFT JOIN `dr_member` ON `dr_member`.`id`=`dr_admin`.`uid`
+ORDER BY `uid` desc
+ LIMIT 10

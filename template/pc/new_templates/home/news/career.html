@@ -1,0 +1,33 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+<!-- {template "nav.html"} -->
+{template "cat.html"}
+
+<div class="commonweb">
+  <div class="Social-text padtb font15" >
+    {$cat.content}
+ </div>
+</div>
+<div class="Careerment-min">
+  <div class="Careerment-list commonweb">
+    <div class=" Career-wrapper">
+      <div class="wrapper-min">
+        <ul class="clearfix swiper-wrapper">
+            {module module=news catid=$catid order=updatetime}
+            <li class="swiper-slide"> 
+                <a href="javascript:;">
+                    <p class="solut-img"> <img src="{dr_thumb($t.thumb, 380, 228)}" alt="{$t.title}" title="{$t.title}" /> </p>
+                    <div class="solut-text">
+                      <h3 class="font20">{$t.title}</h3>
+                      <p>{$t.description}</p>
+                    </div>
+                </a> 
+            </li>
+            {/module}
+        </ul>
+      </div>
+      <a href="javascript:;" class="relat-btn relat-prev"></a> <a href="javascript:;" class="relat-btn relat-next"></a> </div>
+  </div>
+</div>
+{template "footer.html"}

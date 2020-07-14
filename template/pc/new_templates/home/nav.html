@@ -1,0 +1,18 @@
+<div class="full-inside-subnav">
+  <div class="commonweb clearfix">
+    <div class="inside-subnav">
+      <h3 class="channel-title">{$top.name}</h3>
+      <div class="subnav clearfix">
+        <ul class="clearfix">
+            {loop $related $c}
+                <li {if $c.id==$catid}class='cur'{/if}><a href='{$c.url}'>{$c.name}</a></li>
+            {/loop}
+        </ul>
+        <a href="javascript:;" class="sub-btn sub-prev"></a> <a href="javascript:;" class="sub-btn sub-next"></a> </div>
+    </div>
+    <div class="crumb">
+      <div class="inner"> 
+        <a href="{SITE_URL}" class="home"></a> <a href='{SITE_URL}'>主页</a> > {dr_catpos($catid, '', true, '<a href="[url]">[name]</a>')} </div>
+    </div>
+  </div>
+</div>

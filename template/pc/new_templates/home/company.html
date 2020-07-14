@@ -1,0 +1,36 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+
+<div class="commonweb padtb">
+    <div class="Comculture-dl clearfix">
+        <div class="thumb"> <img src="{HOME_THEME_PATH}picture/1569413201.jpg" alt="{$cat.name}" title="$cat.title"/></div>
+        <div class="infor">
+            <h3 class="name">{$cat.name}</h3>
+              <p class="text">
+                    {$cat.content}
+              </p>
+        </div>
+    </div>
+  <div class="Comculture-list padtb">
+    <ul class="clearfix">
+        {module module=news catid=$catid order=id num=4}
+        <li>
+            <div class="content" style="height: 349px;">
+              <p class="img"><img src="{dr_thumb($t.thumb)}" alt="{$t.title}" title="{$t.title}"/></p>
+              <div class="cult-text">
+                <h3 class="name">{$t.title}</h3>
+                <p>{$t.description}</p>
+              </div>
+            </div>
+        </li>
+        {/module}
+    </ul>
+  </div>
+</div>
+</div>
+{template "footer.html"}
+</body>
+</html>

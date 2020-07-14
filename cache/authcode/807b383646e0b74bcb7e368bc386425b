@@ -1,0 +1,4 @@
+SELECT *
+FROM `dr_1_navigator`
+WHERE `type` =0
+ORDER BY `displayorder` ASC, `id` ASC

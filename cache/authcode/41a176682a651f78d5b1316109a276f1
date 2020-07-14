@@ -1,0 +1,3 @@
+SELECT *
+FROM `dr_1_page`
+ORDER BY `displayorder` ASC, `id` ASC

@@ -1,0 +1,5 @@
+SELECT *
+FROM `dr_1_news`
+WHERE `catid` = 69
+ORDER BY `displayorder` DESC, `updatetime` DESC
+ LIMIT 10

@@ -1,0 +1,4 @@
+SELECT *
+FROM `dr_1_photo`
+ORDER BY `displayorder` DESC, `updatetime` DESC
+ LIMIT 30, 10

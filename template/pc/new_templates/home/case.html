@@ -1,0 +1,24 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+<div class="product-list commonweb">
+    <ul class="clearfix">
+    {module catid=$catid order=updatetime page=1}
+        <li class="col-xs-6 col-sm-3"> 
+            <a href="{$t.url}" title="{$t.title}">
+                <p class="pro-img"> <img src="{dr_thumb($t.thumb)}" alt="{$t.title}" title="{$t.title}" /> </p>
+                <p class="pro-text">{$t.title}</p>
+            </a> 
+        </li>
+    {/module}
+  </ul>
+</div>
+<div class="commonweb padtbb">
+    <div class="pages">
+    {$pages}
+    </div>
+</div>
+
+{template "footer.html"}

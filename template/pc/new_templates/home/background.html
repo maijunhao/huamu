@@ -1,0 +1,18 @@
+<a href="javascript:;" class="exit-off-canvas"></a>
+<div class="inside-banner "> 
+{if $cat.thumb}
+	<!-- <img src="{dr_get_file($cat.thumb)}" alt="{$cat.name}" title="{$cat.name}"/> 	 -->
+{elseif $cat.mid == ''} <!--单页-->
+	<!-- <img src="{dr_get_file(dr_block('page_pic'))}" alt="{$cat.name}" title="{$cat.name}"/>  -->
+{elseif $cat.mid == 'news'} <!--新闻-->
+	<!-- <img src="{dr_get_file(dr_block('news_pic'))}" alt="{$cat.name}" title="{$cat.name}"/>  -->
+{elseif $cat.mid == 'photo'} <!--图片-->
+	<!-- <img src="{dr_get_file(dr_block('photo_pic'))}" alt="{$cat.name}" title="{$cat.name}"/>  -->
+{elseif $cat.mid == 'down'} <!--下载-->
+	<!-- <img src="{dr_get_file(dr_block('down_pic'))}" alt="{$cat.name}" title="{$cat.name}"/>  -->
+{elseif $cat.mid == 'question'} <!--常见问题-->
+	<!-- <img src="{dr_get_file(dr_block('question_pic'))}" alt="{$cat.name}" title="{$cat.name}"/>  -->
+{elseif $cat.mid == 'join'} <!--人才招聘-->
+	<!-- <img src="{dr_get_file(dr_block('join_pic'))}" alt="{$cat.name}" title="{$cat.name}"/>  -->
+{/if}
+</div>

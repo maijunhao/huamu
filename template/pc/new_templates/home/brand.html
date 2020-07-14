@@ -1,0 +1,26 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+
+<div class="History-min commonweb">
+  <div class="history-list">
+    <div class="historyulitem">
+      <ul class="clearfix swiper-wrapper">
+        {module module=news order=updatetime catid=$catid}
+        {content id=$t.id module=news}
+        <li class="swiper-slide">
+          <div class="history-con">
+            <div class="history-text">
+              {$t.content}
+            </div>
+            <span class="year-num">{$t.title}</span> </div>
+        </li>
+        {/content}
+        {/module}
+      </ul>
+    </div>
+    <a href="javascript:;" class="hisswiper-left history-btn"></a> <a href="javascript:;" class="hisswiper-right history-btn"></a> </div>
+</div>
+{template "footer.html"}

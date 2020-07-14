@@ -1,0 +1,4 @@
+SELECT *
+FROM `dr_member`
+ORDER BY `id` desc
+ LIMIT 10

@@ -1,0 +1,63 @@
+<header>
+    <div class="headerweb clearfix" >
+        <div style="display: inline-block;">
+            <img alt="广州市花木公司" src="{HOME_THEME_PATH}picture/gzhm.png">
+        </div>
+        <div class="header-nav commonweb " style="display: inline-block;">
+            <ul class="clearfix" id="curlist">
+            <li rel="0" {if $indexc}class='cur'{/if}>
+              <h3><a href="{SITE_URL}" title="{SITE_TITLE}">网站首页</a><em class="phsearchicon"></em></h3>
+            </li>
+
+            {category module=share pid=0}
+            <li rel="{$key +1}" {if IS_SHARE && $catid && in_array($catid, $t.catids)}class='cur'{/if}>
+                <h3>
+                    <a href="{$t.url}" title="{$t.name}">{$t.name}</a>
+                    {if $t.child}<em class="phsearchicon"></em>{/if}
+                </h3>
+                {if $t.child}
+                <div class='sub-nav'> 
+                    {category module=share pid=$t.id return=t2}
+                    <div class="sub-item">
+                        <h4><a href="{$t2.url}" title="{$t2.name}">{$t2.name}</a></h4>
+                    </div>
+                    {/category}
+                </div>
+                {/if}
+            </li>
+            {/category}
+            <div class="childMenu"> </div>
+        </div>
+        <div class="header-right">
+            <div class="headsearch"> 
+                <a href="javascript:;" class="search-con"> <span class="search-inco"></span>
+                    <div class="searchbox">
+                        <form  name="formsearch" action="/index.php" method="get">
+                            <input type="hidden" name="s" value="news">
+                            <input type="hidden" name="c" value="search">
+                            <input type="text" name="keyword" class="searchtext" />
+                            <input type="submit" class="searchbtn" value="搜索" />
+                        </form>
+                    </div>
+                </a> 
+            </div>
+            <!--div class="headcompany"> 
+                <a href="javascript:;" class="Currentlan">旗下公司</a>
+                <div class="company-choose"> 
+					{navigator type=1 return=t}
+					<a href='{$t.url}' target='_blank'>{$t.name}</a>
+					{/navigator} 
+                </div>
+			</div-->
+			<a href="javascript:;" class="mobnav-btn"> <span></span> <span></span> <span></span> </a> 
+          <!--div class="headlanguage"> <a href="" target="_blank" class="langbtn"></a> </div-->
+        </div>
+    <!-- <div class="pcnavmenubtn"> <a href="javascript:;" class="pcnav-btn"> <span></span> <span></span> <span></span> </a> </div>
+    </div> -->
+</header>
+<!--侧边导航-->
+<div class="headsideNav"> 
+    <a href="javascript:;" class="slide-colse"></a> 
+    <a href="#" ><img src="{SITE_LOGO}" alt="{SITE_NAME}" /></a>
+    <div class="slide-nav"> </div>
+</div>

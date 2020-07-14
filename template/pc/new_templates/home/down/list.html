@@ -1,0 +1,21 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+<div class="Download-list commonweb">
+    <ul>
+        {module module=down catid=$catid order=updatetime page=1 more=1}
+        <li> <span class="down-text">{$t.title}</span> <a href="{dr_down_file($t.file)}" title="{$t.title}" class="down-btn"></a> </li>
+        {/module}
+        {if !$count}
+	        <p>没有找到相关内容...</p>
+	    {/if}
+    </ul>
+</div>
+<div class="commonweb padtbb">
+    <div class="pages">
+        {$pages}
+    </div>
+</div>
+{template "footer.html"}

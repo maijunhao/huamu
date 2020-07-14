@@ -1,0 +1,52 @@
+{template "top.html"}
+{template "header.html"}
+{template "background.html"}
+{template "nav.html"}
+{template "cat.html"}
+
+<div class="recruiting-list commonweb">
+    <ul class="grid effect-2" id="grid">
+        {module catid=$catid order=updatetime page=1}
+        <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="recontent">
+                <div class="posititext">
+                    <h3 class="font18 retitle">{$t.title}</h3>
+                    <p class="h13"></p>
+                    <p>职位名称：{$t.title}</p>
+                    <p>职位类型：{$t.type}</p>
+                    <p>工作经验：{$t.experience}</p>
+                    <p>学历要求：{$t.requirement}</p>
+                    <p>招聘人数：{$t.num}人</p>
+                    <p>发布时间：{$t.updatetime}</p>
+                    <p class="h13"></p>
+                    <div class="zhaopmin">
+                        <h4 class="c666666 font16">工作描述：</h4>
+                        <p> {$t.description} </p>
+                    </div>
+                </div>
+                <a href="mailto:{dr_block('email')}" class="Delivery">在线投递</a> 
+            </div>
+        </li>
+        {/module}
+    </ul>
+</div>
+<div class="commonweb padtbb">
+    <div class="pages">
+    {$pages}
+    </div>
+</div>
+<script type="text/javascript" src="{HOME_THEME_PATH}js/modernizr.custom.js"></script> 
+<script type="text/javascript" src="{HOME_THEME_PATH}js/masonry.pkgd.min.js"></script> 
+<script type="text/javascript" src="{HOME_THEME_PATH}js/imagesloaded.js"></script> 
+<script type="text/javascript" src="{HOME_THEME_PATH}js/classie.js"></script> 
+<script type="text/javascript" src="{HOME_THEME_PATH}js/animonscroll.js"></script> 
+<script>
+    if ($("#grid").length > 0) {
+            new AnimOnScroll(document.getElementById('grid'), {
+                minDuration: 0.4,
+                maxDuration: 0.7,
+                viewportFactor: 0.2
+            });
+        }
+</script> 
+{template "footer.html"}
