@@ -3,8 +3,10 @@
         <div style="height: 400px;e ;width: 1200px; margin: 0 auto;">
             <div style="width: 500px;  border-bottom:  1px dashed#666; display: inline-block; padding: 10px;padding-top: 50px;margin-right: 100px; margin-left: 100px;"><span><h3>联系我们</h3></span></div>
             <div style="width: 350px; border-bottom:  1px dashed#666;display: inline-block; padding: 10px;padding-top: 50px;"><span><h3>友情连接</h3></span></div>
-            <div style="width: 500px; height: 280px; margin-left: 50px; padding-top: 20px; ">
-                <div style="height: 150px; width: 150px; background-color: black; display: inline-block;padding-top: 50px;margin-right: 60px; margin-left: 100px;"></div>
+            <div style="width: 500px; height: 280px; margin-left: 50px; padding-top: 0px; ">
+                <div style="height: 150px; width: 150px;  display: inline-block;padding-top: 50px;margin-right: 60px; margin-left: 100px;">
+                <img src="static\new\images\ca3aa31ab6938dfb3a261fe10fee472.png" alt="static\new\images\ca3aa31ab6938dfb3a261fe10fee472.png">
+                </div>
                 <div style="height: 150px; width: 185px;  display: inline-block; ">
                     <ul>
                         <li style="margin: 15px;"><span>地址：广州十水荫路102号</span></li>
